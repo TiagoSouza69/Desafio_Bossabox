@@ -1,0 +1,55 @@
+<!--HTML elaborado por Tiago S.Souza em resposta ao desafio frontend da BossaBox-->
+<!--Feito nos primeiros dias de Abril de 2021-->
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8" lang="pt-BR">   
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+      <script src="./js/index.js"></script>
+      <style>
+         ul{
+              list-style: none;
+          }
+          li {
+              margin-top: 10px;
+          }
+          input{
+              width: 220px;
+          } 
+          body
+          {font-family: 'Roboto', sans-serif
+        }
+        </style>
+       </head>
+    <body>
+        <h3>+ Add new tool</h3>
+       <form  id="frmCadastro">
+            <ul>
+                <li>
+                    <label for="title">Tool name :</label><br>
+                    <input type="text" id="title"/>
+                </li>
+                <li>
+                    <label for="link">Tool link:</label><br>
+                    <input type="url" id="link"/>
+                </li>
+                <li>
+                    <label for="desc">Tool description:</label><br>
+                    <textarea name="" id="desc" cols="30" rows="10"></textarea>
+                </li>
+                <li>
+                    <label for="tgs">Tags:</label><br>
+                    <input type="text" id="tgs"/>
+                </li>
+                <li>   
+                    <button type="button"  id="btnSalvar" onclick="adicionar()">Add Tool</button> 
+                    <button type="button"  id="btnretornar" onclick="window.location.href='index.html'">Return</button>
+                </li>
+            </ul>
+        </form>
+    
+     
+        
+    </body>
+</html> 

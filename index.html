@@ -1,0 +1,133 @@
+<!--HTML elaborado por Tiago S.Souza em resposta ao desafio frontend da BossaBox-->
+<!--Feito nos primeiros dias de Abril de 2021-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/syle.css">
+    <script src="./js/jquery-3.5.1.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+      $(document).ready(function adiciona(e) {
+      $('.main_submit').click(function(){
+        $('#modal').fadeIn(500); 
+
+        $(".modal-box-conteudo").load("adicionar.html");
+      });
+      $('.fechar').click(function(){
+        $('#modal').fadeOut(500);
+     });
+        
+  });
+      
+ </script>
+    <title>VUTTR</title>
+</head>
+<body>
+   <header>
+        <h1>VUTTR</h1>
+        <h2>Very Userful Tools to Remenber</h2>
+   </header>
+   <main>
+        <input type="text" class="main_seach"id="seach" placeholder="Seach"><img src="./img/lupa.png" alt="">
+       <script>
+          $("#seach").keypress(function buscar() {
+          var s = document.getElementById("seach").value;
+         fetch('http://localhost:3000/tools?q='+s)
+         .then(response => response.json())
+         .then(json => {
+           const div = document.getElementById("ferramenta1");
+           div.innerHTML = JSON.stringify(json);
+         })
+         .then(
+           document.getElementById("hiren").style.background="#DEDCE1"
+          )
+          .then(
+           document.getElementById("hiren").style.border="none"
+          )
+          .then(
+           document.getElementById("hiren").style.width="690px"
+          )
+          .then(
+           document.getElementById("hiren").style.height="510px"
+          )
+          .then(
+           document.getElementById("hiren").style.position="relative"
+          )
+          .then(
+           document.getElementById("hiren").style.top="-320px"
+          )
+          .then(
+           document.getElementById("hiren").style.left="498px"
+          )     
+         })
+       </script>
+       <input type="checkbox" class="main_check" id="check_tag_it" ><p>Seach in tags only </p>
+       <script>
+         $('#check_tag_it').on('click', function(){
+         var checkbox = $('#check_tag_it:checked').length;
+           
+       if(checkbox === 1)
+       {
+        $("#seach").keypress(function buscartag() {
+          var s = document.getElementById("seach").value;
+         fetch('http://localhost:3000/tools?tags_like='+s)
+         .then(response => response.json())
+         .then(json => {
+           const div = document.getElementById("ferramenta1");
+           div.innerHTML = JSON.stringify(json);
+         })
+         .then(
+           document.getElementById("hiren").style.background="#DEDCE1"
+          )
+          .then(
+           document.getElementById("hiren").style.border="none"
+          )
+          .then(
+           document.getElementById("hiren").style.width="690px"
+          )
+          .then(
+           document.getElementById("hiren").style.height="510px"
+          )
+          .then(
+           document.getElementById("hiren").style.position="relative"
+          )
+          .then(
+           document.getElementById("hiren").style.top="-320px"
+          )
+          .then(
+           document.getElementById("hiren").style.left="498px"
+          )     
+         })
+       }
+     });
+     </script>
+        <button class="main_submit" onclick="adiciona(e)">+ Add</button>
+        <div class="border1" id="ferramenta1">
+         </div>
+        <div class="border2" id="ferramenta2">
+       </div>
+        <div class="border3" id="ferramenta3">
+        </div>
+        <div id="modal">
+          <div class="modal-box">
+              <div class="modal-box-conteudo">
+                  <div class="fechar">X</div>
+              </div>
+          </div>
+         </div>
+         <button class="delete_tool1" id="rt1" onclick="rt1()" >Remove</button>
+         <button class="delete_tool2" id="rt2" onclick="rt2()" >Remove</button>
+         <button class="delete_tool3" id="rt3" onclick="rt3()" >Remove</button>
+         <div class="hiren" id="hiren"></div>
+        </main>
+   <footer>
+       
+   </footer> 
+</body>
+</html>
